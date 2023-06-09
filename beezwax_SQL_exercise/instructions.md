@@ -36,12 +36,12 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 **ANSWER:** 
 >SELECT *
 <br>, CASE WHEN TOTAL_STUDENTS>0 
-<br>THEN STUDENTS_IN_POVERTY/TOTAL_STUDENTS 
+<br>THEN COALESCE(STUDENTS_IN_POVERTY, 0)/TOTAL_STUDENTS 
 <br>ELSE 0 
 <br>END AS POVERTY_RATE
 <br>FROM [q2 dataset]
 
-*Note: The CASE statement is unnecessary because we previously filtered on schools with more than 100 students. It would be necessary only if there were rows with 0 or null in the TOTAL_STUDENTS column.*
+*Note: The CASE statement is unnecessary because we previously filtered on schools with more than 100 students. It would be necessary only if there were rows with 0 or null in the TOTAL_STUDENTS column. The coalesce is there to make the percentage 0 if the field is null. Ideally, they would need to add some way to account for 0 students in poverty if the field is null. Coalesce is one way, another would be a case statement.*
 
 **QUESTION 4a:** Create a file with one row per school district (LEAID), summing the columns for each grade level (G09, G10, G11, G12, G13, UG, AE) and the total number of students in poverty and total enrollment overall. Calculate the poverty rate for the district, as well as it's average school poverty rate. Name the district totals the same as the original column name, the district poverty rate as DISTRICT_POVERTY_RATE and the average school poverty rate as AVG_SCHOOL_POVERTY_RATE
 
@@ -67,7 +67,8 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 
 **ANSWER:** 
 >SELECT
-<br>LEA_NAME
+<br>LEAID
+<br>, LEA_NAME
 <br>, SCH_NAME
 <br>, '09' AS GRADE_LEVEL
 <br>, G09 AS ENROLLMENT
@@ -76,7 +77,8 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 <br>UNION
 <br>
 <br>SELECT
-<br>LEA_NAME
+<br>LEAID
+<br>, LEA_NAME
 <br>, SCH_NAME
 <br>, '10' AS GRADE_LEVEL
 <br>, G10 AS ENROLLMENT
@@ -85,7 +87,8 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 <br>UNION
 <br>
 <br>SELECT
-<br>LEA_NAME
+<br>LEAID
+<br>, LEA_NAME
 <br>, SCH_NAME
 <br>, '11' AS GRADE_LEVEL
 <br>, G11 AS ENROLLMENT
@@ -94,7 +97,8 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 <br>UNION
 <br>
 <br>SELECT
-<br>LEA_NAME
+<br>LEAID
+<br>, LEA_NAME
 <br>, SCH_NAME
 <br>, '12' AS GRADE_LEVEL
 <br>, G12 AS ENROLLMENT
@@ -103,7 +107,8 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 <br>UNION
 <br>
 <br>SELECT
-<br>LEA_NAME
+<br>LEAID
+<br>, LEA_NAME
 <br>, SCH_NAME
 <br>, 'UG' AS GRADE_LEVEL
 <br>, UG AS ENROLLMENT
@@ -112,15 +117,24 @@ Field list: LEAID, LEA_NAME, SCH_NAME, TOTFRL, G09, G10, G11, G12, G13, UG, AE, 
 <br>UNION
 <br>
 <br>SELECT
-<br>LEA_NAME
+<br>LEAID
+<br>, LEA_NAME
 <br>, SCH_NAME
 <br>, 'AE' AS GRADE_LEVEL
 <br>, AE AS ENROLLMENT
 <br>FROM  [q3 dataset]
 <br><br>
 
+**QUESTION 5:** Add the district poverty rate from Q4a to every row of the Q4b file for that district (LEAID). Include all columns and rows from 4a and DISTRICT_POVERTY_RATE from 4b
 
+**ANSWER:**
+>SELECT 
+<br>q4a.*
+<br>, DISTRICT_POVERTY_RATE
+<br>FROM q4a
+<br>LEFT JOIN q4b on q4a.LEAID = q4b.LEAID
 
+*Note: could list out all the fields or use the * with the table name listed.Could also use an inner join or a left join in this case. We could make this more complicated to test join knowledge.*
 
 __________________________________________________________
 **OTHER DATASET IDEAS** 
