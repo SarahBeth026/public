@@ -1,7 +1,5 @@
 import pandas as pd
 import pandasql as psql
-#import sys
-#import datetime
 
 #put file location here## 
 github_file_folder = r'C:\Users\sbanks\OneDrive - World Vision US\Documents\GitHub\public\beezwax_SQL_exercise'
