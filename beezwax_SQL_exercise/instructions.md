@@ -1,4 +1,5 @@
-##***Beezwax SQL Exercise***
+***Beezwax SQL Exercise***
+--------------
 
 Dataset: Public School Characteristics 
 https://catalog.data.gov/dataset/public-school-characteristics-2020-21 
