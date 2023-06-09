@@ -150,7 +150,7 @@ FROM q4a
 LEFT JOIN q4b on q4a.LEAID = q4b.LEAID
 ```
 
-*Notes: This tests their ability to join datasets. We could also use an inner join or a left join in this case, or ask them to join to a subquery or common table expression (CTE) to make this more complicated and test join knowledge. They could list out all the fields or use the * with the table name listed and get the same result.*
+>*Notes: This tests their ability to join datasets. We could also use an inner join or a left join in this case, or ask them to join to a subquery or common table expression (CTE) to make this more complicated and test join knowledge. They could list out all the fields or use the * with the table name listed and get the same result.*
 
 __________________________________________________________
 **OTHER DATASET IDEAS** 
