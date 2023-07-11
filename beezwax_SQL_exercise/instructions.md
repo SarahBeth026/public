@@ -1,8 +1,11 @@
 ***Beezwax SQL Exercise***
 --------------
 
+A version of this exercise without answers that can be copied/filled in can be found here: https://app.noteable.io/published/32c330c7-808e-4855-93af-a03bb57de2b3/Beezwax-Example 
+
 Dataset: Public School Characteristics 
 https://catalog.data.gov/dataset/public-school-characteristics-2020-21 
+
 
 **QUESTION 1:** Using the data frame/table named "schools" (imported in the step above), filter the file to just Washington (LSTATE) State High Schools (SCHOOL_LEVEL = High) with 100 or more students (use TOTAL field for student count)
 
