@@ -1,7 +1,8 @@
 ***Beezwax SQL Exercise***
 --------------
 
-A version of this exercise without answers that can be copied/filled in can be found here: https://app.noteable.io/published/32c330c7-808e-4855-93af-a03bb57de2b3/Beezwax-Example 
+A version of this exercise without answers that can be copied/filled in can be found here: 
+https://app.noteable.io/published/32c330c7-808e-4855-93af-a03bb57de2b3/Beezwax-SQL-Exercise
 
 Dataset: Public School Characteristics 
 https://catalog.data.gov/dataset/public-school-characteristics-2020-21 
