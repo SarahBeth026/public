@@ -189,4 +189,4 @@ FROM q6
 WHERE POVERTY_COMPARE_TO_STATE = 'ABOVE'
 ```
 
->*Notes: I just added this one as a quick way to see if they got the same answer I did.*
+>*Notes: I just added this one as a quick way to see if they got the same answer I did. There should be 196 schools with >100 enrollment and a district poverty rate higher than the state*
